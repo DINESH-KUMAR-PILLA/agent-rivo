@@ -1,0 +1,146 @@
+[
+  {
+    "id": "history_001_m1",
+    "visit_id": "visit_001",
+    "actor_id": "user_anika",
+    "kind": "text",
+    "received_at": "2026-08-24T10:00:00+02:00",
+    "text": "Start a visit to Atlas Lyon Centre. The entrance poster is outdated. The stockroom shelf labels are missing. The front display is tidy."
+  },
+  {
+    "id": "history_001_m2",
+    "visit_id": "visit_001",
+    "actor_id": "user_anika",
+    "kind": "text",
+    "received_at": "2026-08-24T10:10:00+02:00",
+    "text": "Sarah should replace the entrance poster by 26 August 2026. No date was agreed for the shelf labels."
+  },
+  {
+    "id": "history_001_m3",
+    "visit_id": "visit_001",
+    "actor_id": "user_anika",
+    "kind": "text",
+    "received_at": "2026-08-24T10:30:00+02:00",
+    "text": "I have reviewed draft 1 and validate this report."
+  },
+  {
+    "id": "history_002_m1",
+    "visit_id": "visit_002",
+    "actor_id": "user_anika",
+    "kind": "text",
+    "received_at": "2026-08-25T10:00:00+02:00",
+    "text": "Start a visit to Atlas Nantes Centre. One delivered parcel has damaged packaging. The shared tablet does not charge. The daily handover notes are complete."
+  },
+  {
+    "id": "history_002_m2",
+    "visit_id": "visit_002",
+    "actor_id": "user_anika",
+    "kind": "text",
+    "received_at": "2026-08-25T10:10:00+02:00",
+    "text": "Karim said that he would contact IT about the tablet. He did not give a date or a diagnosis."
+  },
+  {
+    "id": "history_002_m3",
+    "visit_id": "visit_002",
+    "actor_id": "user_anika",
+    "kind": "text",
+    "received_at": "2026-08-25T10:30:00+02:00",
+    "text": "I have reviewed draft 1 and validate this report."
+  },
+  {
+    "id": "history_003_m1",
+    "visit_id": "visit_003",
+    "actor_id": "user_noah",
+    "kind": "text",
+    "received_at": "2026-08-26T10:00:00+02:00",
+    "text": "Start a visit to Atlas Lille Centre. A new team member has not yet received the handover guide. One promotional label is missing. The stockroom is tidy."
+  },
+  {
+    "id": "history_003_m2",
+    "visit_id": "visit_003",
+    "actor_id": "user_noah",
+    "kind": "text",
+    "received_at": "2026-08-26T10:10:00+02:00",
+    "text": "Maya should share the handover guide by 28 August 2026."
+  },
+  {
+    "id": "history_003_m3",
+    "visit_id": "visit_003",
+    "actor_id": "user_noah",
+    "kind": "text",
+    "received_at": "2026-08-26T10:30:00+02:00",
+    "text": "I have reviewed draft 1 and validate this report."
+  },
+  {
+    "id": "history_004_m1",
+    "visit_id": "visit_004",
+    "actor_id": "user_anika",
+    "kind": "text",
+    "received_at": "2026-09-03T10:00:00+02:00",
+    "text": "Start a visit to Atlas Lyon Centre. Several boxes are outside the designated storage area. The printed contact sheet is outdated. The entrance poster is now up to date."
+  },
+  {
+    "id": "history_004_m2",
+    "visit_id": "visit_004",
+    "actor_id": "user_anika",
+    "kind": "text",
+    "received_at": "2026-09-03T10:10:00+02:00",
+    "text": "Sarah should replace the printed contact sheet. No deadline was specified."
+  },
+  {
+    "id": "history_004_m3",
+    "visit_id": "visit_004",
+    "actor_id": "user_anika",
+    "kind": "text",
+    "received_at": "2026-09-03T10:30:00+02:00",
+    "text": "I have reviewed draft 1 and validate this report."
+  },
+  {
+    "id": "history_005_m1",
+    "visit_id": "visit_005",
+    "actor_id": "user_anika",
+    "kind": "text",
+    "received_at": "2026-09-04T10:00:00+02:00",
+    "text": "Start a visit to Atlas Nantes Centre. The shared tablet still does not charge. Two delivery quantities have not been checked. The old promotional posters are still displayed."
+  },
+  {
+    "id": "history_005_m2",
+    "visit_id": "visit_005",
+    "actor_id": "user_anika",
+    "kind": "text",
+    "received_at": "2026-09-04T10:10:00+02:00",
+    "text": "Karim should check the two delivery quantities by 11 September 2026. The tablet cause remains unknown."
+  },
+  {
+    "id": "history_005_m3",
+    "visit_id": "visit_005",
+    "actor_id": "user_anika",
+    "kind": "text",
+    "received_at": "2026-09-04T10:30:00+02:00",
+    "text": "I have reviewed draft 1 and validate this report."
+  },
+  {
+    "id": "history_006_m1",
+    "visit_id": "visit_006",
+    "actor_id": "user_noah",
+    "kind": "text",
+    "received_at": "2026-09-05T10:00:00+02:00",
+    "text": "Start a visit to Atlas Lille Centre. The opening checklist is not displayed in the team area. The supply cupboard has no inventory list. The delivery register is up to date."
+  },
+  {
+    "id": "history_006_m2",
+    "visit_id": "visit_006",
+    "actor_id": "user_noah",
+    "kind": "text",
+    "received_at": "2026-09-05T10:10:00+02:00",
+    "text": "Maya should place the opening checklist in the team area by 8 September 2026. No other follow-up was requested."
+  },
+  {
+    "id": "history_006_m3",
+    "visit_id": "visit_006",
+    "actor_id": "user_noah",
+    "kind": "text",
+    "received_at": "2026-09-05T10:30:00+02:00",
+    "text": "I have reviewed draft 1 and validate this report."
+  }
+]

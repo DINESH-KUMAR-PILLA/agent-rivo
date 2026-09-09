@@ -1,0 +1,23 @@
+[
+  {
+    "id": "store_lyon",
+    "name": "Atlas Lyon Centre",
+    "city": "Lyon",
+    "timezone": "Europe/Paris",
+    "local_contact_name": "Sarah"
+  },
+  {
+    "id": "store_nantes",
+    "name": "Atlas Nantes Centre",
+    "city": "Nantes",
+    "timezone": "Europe/Paris",
+    "local_contact_name": "Karim"
+  },
+  {
+    "id": "store_lille",
+    "name": "Atlas Lille Centre",
+    "city": "Lille",
+    "timezone": "Europe/Paris",
+    "local_contact_name": "Maya"
+  }
+]

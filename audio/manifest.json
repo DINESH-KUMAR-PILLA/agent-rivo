@@ -1,0 +1,54 @@
+[
+  {
+    "id": "voice-01-observations",
+    "language": "en",
+    "synthetic": true,
+    "generation_method": "Local GnuSpeech synthesis via @echogarden/gnuspeech-wasm 0.3.0; no real employee recording.",
+    "duration_seconds": 12.021,
+    "script_path": "audio/voice-01-observations.txt",
+    "wav_path": "audio/voice-01-observations.wav",
+    "ogg_path": "audio/voice-01-observations.ogg",
+    "wav_sha256": "48875ec56688caf467b263707ff4d0059ded34aa28365b58d72e373fdbf2e514",
+    "ogg_sha256": "f1bd91d800c2f4f036ea2b03590dcf5dd139d173ac9ebb6d9608dde23577fd19",
+    "purpose": "Visit observations; quantity is later corrected in voice-02."
+  },
+  {
+    "id": "voice-02-correction",
+    "language": "en",
+    "synthetic": true,
+    "generation_method": "Local GnuSpeech synthesis via @echogarden/gnuspeech-wasm 0.3.0; no real employee recording.",
+    "duration_seconds": 10.237,
+    "script_path": "audio/voice-02-correction.txt",
+    "wav_path": "audio/voice-02-correction.wav",
+    "ogg_path": "audio/voice-02-correction.ogg",
+    "wav_sha256": "9b034fb454706aa07935f8544a790ff11f60b42008c512f1c025d8f9aa47cd99",
+    "ogg_sha256": "f708cc514e7dbfb65b2b56e8397598858f34a69c0208f17e06fa29b8294a4528",
+    "purpose": "Conversational correction; keep original transcript and use the corrected value."
+  },
+  {
+    "id": "voice-03-nantes",
+    "language": "en",
+    "synthetic": true,
+    "generation_method": "Local GnuSpeech synthesis via @echogarden/gnuspeech-wasm 0.3.0; no real employee recording.",
+    "duration_seconds": 12.809,
+    "script_path": "audio/voice-03-nantes.txt",
+    "wav_path": "audio/voice-03-nantes.wav",
+    "ogg_path": "audio/voice-03-nantes.ogg",
+    "wav_sha256": "fdedfaf24563dbb8d1bd9df7bb7b6fbc9b59ebe628f735d1bf09cc70e470e41e",
+    "ogg_sha256": "8c90e8d370ece7c452b0b88180efdd4699a911bc6a5d984f2e080075d6571b8e",
+    "purpose": "Start intent and findings in one voice note; preserve unknown quantity."
+  },
+  {
+    "id": "voice-04-procedure-question",
+    "language": "en",
+    "synthetic": true,
+    "generation_method": "Local GnuSpeech synthesis via @echogarden/gnuspeech-wasm 0.3.0; no real employee recording.",
+    "duration_seconds": 8.905,
+    "script_path": "audio/voice-04-procedure-question.txt",
+    "wav_path": "audio/voice-04-procedure-question.wav",
+    "ogg_path": "audio/voice-04-procedure-question.ogg",
+    "wav_sha256": "d75eab667b3736a78c3b6242ca7b318fe19e705e4b7fa8b203b22467f33732e7",
+    "ogg_sha256": "ad02e6e016efbc3e72e4f6ff3e6f5ead52a97d93a1db426a62a28eb03eb8504b",
+    "purpose": "A procedural question; must not become an observed incident."
+  }
+]

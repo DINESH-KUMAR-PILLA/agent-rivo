@@ -1,0 +1,25 @@
+[
+  {
+    "id": "user_anika",
+    "display_name": "Anika Rao",
+    "role": "regional_manager",
+    "store_ids": [
+      "store_lyon",
+      "store_nantes"
+    ],
+    "test_email": "anika@agent-rivo.example.test",
+    "auth_user_id": null,
+    "whatsapp_sender_id": null
+  },
+  {
+    "id": "user_noah",
+    "display_name": "Noah Bennett",
+    "role": "regional_manager",
+    "store_ids": [
+      "store_lille"
+    ],
+    "test_email": "noah@agent-rivo.example.test",
+    "auth_user_id": null,
+    "whatsapp_sender_id": null
+  }
+]

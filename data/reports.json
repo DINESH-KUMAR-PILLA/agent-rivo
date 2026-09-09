@@ -1,0 +1,302 @@
+[
+  {
+    "id": "report_001",
+    "visit_id": "visit_001",
+    "store_id": "store_lyon",
+    "author_id": "user_anika",
+    "state": "validated",
+    "version": 1,
+    "validated_by": "user_anika",
+    "validated_at": "2026-08-24T10:30:00+02:00",
+    "title": "Atlas Lyon Centre — Visit report — 2026-08-24",
+    "summary": "The entrance poster is outdated. The stockroom shelf labels are missing. The front display is tidy.",
+    "findings": [
+      {
+        "id": "report_001_finding_1",
+        "category": "front_area",
+        "kind": "issue",
+        "text": "The entrance poster is outdated.",
+        "source_message_ids": [
+          "history_001_m1"
+        ]
+      },
+      {
+        "id": "report_001_finding_2",
+        "category": "backroom",
+        "kind": "issue",
+        "text": "The stockroom shelf labels are missing.",
+        "source_message_ids": [
+          "history_001_m1"
+        ]
+      },
+      {
+        "id": "report_001_finding_3",
+        "category": "interior_display",
+        "kind": "positive",
+        "text": "The front display is tidy.",
+        "source_message_ids": [
+          "history_001_m1"
+        ]
+      }
+    ],
+    "followup_notes": [
+      {
+        "text": "Sarah should replace the entrance poster by 26 August 2026. No date was agreed for the shelf labels.",
+        "source_message_ids": [
+          "history_001_m2"
+        ]
+      }
+    ],
+    "validation_message_id": "history_001_m3"
+  },
+  {
+    "id": "report_002",
+    "visit_id": "visit_002",
+    "store_id": "store_nantes",
+    "author_id": "user_anika",
+    "state": "validated",
+    "version": 1,
+    "validated_by": "user_anika",
+    "validated_at": "2026-08-25T10:30:00+02:00",
+    "title": "Atlas Nantes Centre — Visit report — 2026-08-25",
+    "summary": "One delivered parcel has damaged packaging. The shared tablet does not charge. The daily handover notes are complete.",
+    "findings": [
+      {
+        "id": "report_002_finding_1",
+        "category": "backroom",
+        "kind": "issue",
+        "text": "One delivered parcel has damaged packaging.",
+        "source_message_ids": [
+          "history_002_m1"
+        ]
+      },
+      {
+        "id": "report_002_finding_2",
+        "category": "equipment",
+        "kind": "issue",
+        "text": "The shared tablet does not charge.",
+        "source_message_ids": [
+          "history_002_m1"
+        ]
+      },
+      {
+        "id": "report_002_finding_3",
+        "category": "team",
+        "kind": "positive",
+        "text": "The daily handover notes are complete.",
+        "source_message_ids": [
+          "history_002_m1"
+        ]
+      }
+    ],
+    "followup_notes": [
+      {
+        "text": "Karim said that he would contact IT about the tablet. He did not give a date or a diagnosis.",
+        "source_message_ids": [
+          "history_002_m2"
+        ]
+      }
+    ],
+    "validation_message_id": "history_002_m3"
+  },
+  {
+    "id": "report_003",
+    "visit_id": "visit_003",
+    "store_id": "store_lille",
+    "author_id": "user_noah",
+    "state": "validated",
+    "version": 1,
+    "validated_by": "user_noah",
+    "validated_at": "2026-08-26T10:30:00+02:00",
+    "title": "Atlas Lille Centre — Visit report — 2026-08-26",
+    "summary": "A new team member has not yet received the handover guide. One promotional label is missing. The stockroom is tidy.",
+    "findings": [
+      {
+        "id": "report_003_finding_1",
+        "category": "team",
+        "kind": "observation",
+        "text": "A new team member has not yet received the handover guide.",
+        "source_message_ids": [
+          "history_003_m1"
+        ]
+      },
+      {
+        "id": "report_003_finding_2",
+        "category": "interior_display",
+        "kind": "issue",
+        "text": "One promotional label is missing.",
+        "source_message_ids": [
+          "history_003_m1"
+        ]
+      },
+      {
+        "id": "report_003_finding_3",
+        "category": "backroom",
+        "kind": "positive",
+        "text": "The stockroom is tidy.",
+        "source_message_ids": [
+          "history_003_m1"
+        ]
+      }
+    ],
+    "followup_notes": [
+      {
+        "text": "Maya should share the handover guide by 28 August 2026.",
+        "source_message_ids": [
+          "history_003_m2"
+        ]
+      }
+    ],
+    "validation_message_id": "history_003_m3"
+  },
+  {
+    "id": "report_004",
+    "visit_id": "visit_004",
+    "store_id": "store_lyon",
+    "author_id": "user_anika",
+    "state": "validated",
+    "version": 1,
+    "validated_by": "user_anika",
+    "validated_at": "2026-09-03T10:30:00+02:00",
+    "title": "Atlas Lyon Centre — Visit report — 2026-09-03",
+    "summary": "Several boxes are outside the designated storage area. The printed contact sheet is outdated. The entrance poster is now up to date.",
+    "findings": [
+      {
+        "id": "report_004_finding_1",
+        "category": "backroom",
+        "kind": "issue",
+        "text": "Several boxes are outside the designated storage area.",
+        "source_message_ids": [
+          "history_004_m1"
+        ]
+      },
+      {
+        "id": "report_004_finding_2",
+        "category": "team",
+        "kind": "issue",
+        "text": "The printed contact sheet is outdated.",
+        "source_message_ids": [
+          "history_004_m1"
+        ]
+      },
+      {
+        "id": "report_004_finding_3",
+        "category": "front_area",
+        "kind": "positive",
+        "text": "The entrance poster is now up to date.",
+        "source_message_ids": [
+          "history_004_m1"
+        ]
+      }
+    ],
+    "followup_notes": [
+      {
+        "text": "Sarah should replace the printed contact sheet. No deadline was specified.",
+        "source_message_ids": [
+          "history_004_m2"
+        ]
+      }
+    ],
+    "validation_message_id": "history_004_m3"
+  },
+  {
+    "id": "report_005",
+    "visit_id": "visit_005",
+    "store_id": "store_nantes",
+    "author_id": "user_anika",
+    "state": "validated",
+    "version": 1,
+    "validated_by": "user_anika",
+    "validated_at": "2026-09-04T10:30:00+02:00",
+    "title": "Atlas Nantes Centre — Visit report — 2026-09-04",
+    "summary": "The shared tablet still does not charge. Two delivery quantities have not been checked. The old promotional posters are still displayed.",
+    "findings": [
+      {
+        "id": "report_005_finding_1",
+        "category": "equipment",
+        "kind": "issue",
+        "text": "The shared tablet still does not charge.",
+        "source_message_ids": [
+          "history_005_m1"
+        ]
+      },
+      {
+        "id": "report_005_finding_2",
+        "category": "backroom",
+        "kind": "observation",
+        "text": "Two delivery quantities have not been checked.",
+        "source_message_ids": [
+          "history_005_m1"
+        ]
+      },
+      {
+        "id": "report_005_finding_3",
+        "category": "interior_display",
+        "kind": "issue",
+        "text": "The old promotional posters are still displayed.",
+        "source_message_ids": [
+          "history_005_m1"
+        ]
+      }
+    ],
+    "followup_notes": [
+      {
+        "text": "Karim should check the two delivery quantities by 11 September 2026. The tablet cause remains unknown.",
+        "source_message_ids": [
+          "history_005_m2"
+        ]
+      }
+    ],
+    "validation_message_id": "history_005_m3"
+  },
+  {
+    "id": "report_006",
+    "visit_id": "visit_006",
+    "store_id": "store_lille",
+    "author_id": "user_noah",
+    "state": "validated",
+    "version": 1,
+    "validated_by": "user_noah",
+    "validated_at": "2026-09-05T10:30:00+02:00",
+    "title": "Atlas Lille Centre — Visit report — 2026-09-05",
+    "summary": "The opening checklist is not displayed in the team area. The supply cupboard has no inventory list. The delivery register is up to date.",
+    "findings": [
+      {
+        "id": "report_006_finding_1",
+        "category": "team",
+        "kind": "issue",
+        "text": "The opening checklist is not displayed in the team area.",
+        "source_message_ids": [
+          "history_006_m1"
+        ]
+      },
+      {
+        "id": "report_006_finding_2",
+        "category": "backroom",
+        "kind": "observation",
+        "text": "The supply cupboard has no inventory list.",
+        "source_message_ids": [
+          "history_006_m1"
+        ]
+      },
+      {
+        "id": "report_006_finding_3",
+        "category": "backroom",
+        "kind": "positive",
+        "text": "The delivery register is up to date.",
+        "source_message_ids": [
+          "history_006_m1"
+        ]
+      }
+    ],
+    "followup_notes": [
+      {
+        "text": "Maya should place the opening checklist in the team area by 8 September 2026. No other follow-up was requested.",
+        "source_message_ids": [
+          "history_006_m2"
+        ]
+      }
+    ],
+    "validation_message_id": "history_006_m3"
+  }
+]

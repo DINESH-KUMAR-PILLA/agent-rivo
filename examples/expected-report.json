@@ -1,0 +1,54 @@
+{
+  "scenario_id": "P02",
+  "format_note": "Illustrative final content; equivalent schemas and wording are accepted. IDs of generated records may differ.",
+  "store_id": "store_lyon",
+  "author_id": "user_anika",
+  "visit_date": "2026-09-07",
+  "state": "validated",
+  "title": "Atlas Lyon Centre — Visit report — 7 September 2026",
+  "summary": "The front display is up to date. Five boxes are outside the designated storage area. The shared tablet has not charged since this morning; the cause is unknown.",
+  "findings": [
+    {
+      "category": "interior_display",
+      "kind": "positive",
+      "text": "The front display is up to date.",
+      "source_message_ids": [
+        "p02_m02"
+      ]
+    },
+    {
+      "category": "backroom",
+      "kind": "issue",
+      "text": "Five boxes are outside the designated storage area.",
+      "source_message_ids": [
+        "p02_m02",
+        "p02_m03"
+      ]
+    },
+    {
+      "category": "equipment",
+      "kind": "issue",
+      "text": "The shared tablet has not charged since this morning. The cause is unknown.",
+      "source_message_ids": [
+        "p02_m02",
+        "p02_m04"
+      ]
+    }
+  ],
+  "followup_notes": [
+    {
+      "text": "Sarah should check the tablet with IT by Friday 11 September 2026, as requested by the visitor.",
+      "source_message_ids": [
+        "p02_m04"
+      ]
+    }
+  ],
+  "validation_message_id": "p02_m06",
+  "forbidden_inferences": [
+    "Fifteen boxes as the final count",
+    "A defective battery as an established diagnosis",
+    "A promise that the tablet will be repaired by Friday",
+    "A task assignment or notification sent to Sarah",
+    "Claims that equipment or follow-up work is complete"
+  ]
+}

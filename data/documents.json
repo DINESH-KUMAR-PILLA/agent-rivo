@@ -1,0 +1,42 @@
+[
+  {
+    "id": "SOP-01",
+    "title": "Preparing and conducting a field visit",
+    "version": "1.0",
+    "effective_from": "2026-08-01",
+    "network_id": "network_atlas",
+    "path": "procedures/01-visit-preparation.md"
+  },
+  {
+    "id": "SOP-02",
+    "title": "Recording stockroom and delivery observations",
+    "version": "1.0",
+    "effective_from": "2026-08-01",
+    "network_id": "network_atlas",
+    "path": "procedures/02-stockroom-observations.md"
+  },
+  {
+    "id": "SOP-03",
+    "title": "Reporting equipment and software issues",
+    "version": "1.0",
+    "effective_from": "2026-08-01",
+    "network_id": "network_atlas",
+    "path": "procedures/03-equipment-observations.md"
+  },
+  {
+    "id": "SOP-04",
+    "title": "Checking displays and promotional materials",
+    "version": "1.0",
+    "effective_from": "2026-08-01",
+    "network_id": "network_atlas",
+    "path": "procedures/04-display-observations.md"
+  },
+  {
+    "id": "SOP-05",
+    "title": "Writing and validating a factual visit report",
+    "version": "1.0",
+    "effective_from": "2026-08-01",
+    "network_id": "network_atlas",
+    "path": "procedures/05-factual-reporting.md"
+  }
+]

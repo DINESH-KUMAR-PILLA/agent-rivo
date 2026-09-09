@@ -1,0 +1,92 @@
+[
+  {
+    "id": "visit_001",
+    "store_id": "store_lyon",
+    "author_id": "user_anika",
+    "state": "validated",
+    "started_at": "2026-08-24T10:00:00+02:00",
+    "validated_at": "2026-08-24T10:30:00+02:00",
+    "report_id": "report_001",
+    "latest_draft_version": 1,
+    "message_ids": [
+      "history_001_m1",
+      "history_001_m2",
+      "history_001_m3"
+    ]
+  },
+  {
+    "id": "visit_002",
+    "store_id": "store_nantes",
+    "author_id": "user_anika",
+    "state": "validated",
+    "started_at": "2026-08-25T10:00:00+02:00",
+    "validated_at": "2026-08-25T10:30:00+02:00",
+    "report_id": "report_002",
+    "latest_draft_version": 1,
+    "message_ids": [
+      "history_002_m1",
+      "history_002_m2",
+      "history_002_m3"
+    ]
+  },
+  {
+    "id": "visit_003",
+    "store_id": "store_lille",
+    "author_id": "user_noah",
+    "state": "validated",
+    "started_at": "2026-08-26T10:00:00+02:00",
+    "validated_at": "2026-08-26T10:30:00+02:00",
+    "report_id": "report_003",
+    "latest_draft_version": 1,
+    "message_ids": [
+      "history_003_m1",
+      "history_003_m2",
+      "history_003_m3"
+    ]
+  },
+  {
+    "id": "visit_004",
+    "store_id": "store_lyon",
+    "author_id": "user_anika",
+    "state": "validated",
+    "started_at": "2026-09-03T10:00:00+02:00",
+    "validated_at": "2026-09-03T10:30:00+02:00",
+    "report_id": "report_004",
+    "latest_draft_version": 1,
+    "message_ids": [
+      "history_004_m1",
+      "history_004_m2",
+      "history_004_m3"
+    ]
+  },
+  {
+    "id": "visit_005",
+    "store_id": "store_nantes",
+    "author_id": "user_anika",
+    "state": "validated",
+    "started_at": "2026-09-04T10:00:00+02:00",
+    "validated_at": "2026-09-04T10:30:00+02:00",
+    "report_id": "report_005",
+    "latest_draft_version": 1,
+    "message_ids": [
+      "history_005_m1",
+      "history_005_m2",
+      "history_005_m3"
+    ]
+  },
+  {
+    "id": "visit_006",
+    "store_id": "store_lille",
+    "author_id": "user_noah",
+    "state": "validated",
+    "started_at": "2026-09-05T10:00:00+02:00",
+    "validated_at": "2026-09-05T10:30:00+02:00",
+    "report_id": "report_006",
+    "latest_draft_version": 1,
+    "message_ids": [
+      "history_006_m1",
+      "history_006_m2",
+      "history_006_m3"
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+# Node / Next
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+app/.env
+app/.env.local
+
+# Vercel / editor / OS
+.vercel
+.DS_Store
+.model-cache/
