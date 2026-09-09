@@ -22,12 +22,18 @@ function headers(): HeadersInit {
   };
 }
 
-/** Send a text reply into an existing WhatsApp chat. */
+/**
+ * Send a text reply into an existing WhatsApp chat.
+ * Per Unipile docs this endpoint expects multipart/form-data with a `text`
+ * field (NOT JSON). We build a FormData and let fetch set the boundary header.
+ */
 export async function sendWhatsappText(chatId: string, text: string): Promise<void> {
+  const form = new FormData();
+  form.append("text", text);
   const res = await fetch(`${baseUrl()}/chats/${encodeURIComponent(chatId)}/messages`, {
     method: "POST",
-    headers: { ...headers(), "content-type": "application/json" },
-    body: JSON.stringify({ text }),
+    headers: headers(), // do NOT set content-type; fetch adds the multipart boundary
+    body: form,
   });
   if (!res.ok) {
     // Do not throw hard: log and continue so a reply failure never loses an
@@ -38,15 +44,20 @@ export async function sendWhatsappText(chatId: string, text: string): Promise<vo
 
 /**
  * Retrieve an attachment's raw bytes for an inbound audio message. We pass the
- * actual bytes to transcription; we do not assume a public media URL.
+ * actual bytes to transcription; we do not assume a public media URL. If the
+ * webhook already gave us a provider URL we fetch that (with our API key);
+ * otherwise we use the message-attachment endpoint.
  */
 export async function fetchAttachmentBytes(
   messageId: string,
   attachmentId: string,
+  attachmentUrl?: string | null,
 ): Promise<Uint8Array> {
-  const url = `${baseUrl()}/messages/${encodeURIComponent(messageId)}/attachments/${encodeURIComponent(
-    attachmentId,
-  )}`;
+  const url =
+    attachmentUrl ??
+    `${baseUrl()}/messages/${encodeURIComponent(messageId)}/attachments/${encodeURIComponent(
+      attachmentId,
+    )}`;
   const res = await fetch(url, { headers: headers() });
   if (!res.ok) throw new Error(`Unipile attachment fetch failed: ${res.status}`);
   const buf = await res.arrayBuffer();

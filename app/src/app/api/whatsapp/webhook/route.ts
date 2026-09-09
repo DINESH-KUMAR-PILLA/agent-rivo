@@ -61,9 +61,9 @@ export async function POST(req: NextRequest) {
     providerMessageId: evt.messageId,
   };
 
-  if (evt.type === "audio" && evt.attachmentId) {
+  if (evt.type === "audio" && (evt.attachmentId || evt.attachmentUrl)) {
     try {
-      const bytes = await fetchAttachmentBytes(evt.messageId, evt.attachmentId);
+      const bytes = await fetchAttachmentBytes(evt.messageId, evt.attachmentId ?? "", evt.attachmentUrl);
       input = {
         ...input,
         audioBytes: bytes,
@@ -102,29 +102,49 @@ interface ParsedEvent {
   text: string | null;
   receivedAt: string | null;
   attachmentId: string | null;
+  attachmentUrl: string | null;
   attachmentName: string | null;
   attachmentMime: string | null;
 }
 
-/** Best-effort extraction of a Unipile "message received" event. */
+/**
+ * Extract a Unipile "message_received" event. Field names follow the current
+ * Unipile webhook payload (top-level account_id, message_id, chat_id, message;
+ * sender.attendee_provider_id; attachments[] with id/type/mimetype/url), with
+ * a few fallbacks in case a DSN nests them under `data`.
+ */
 function extractEvent(body: unknown): ParsedEvent | null {
   const b = body as Record<string, any>;
-  // Unipile commonly wraps the message; support a few shapes.
-  const msg = b.message ?? b.data ?? b;
-  const eventType = b.event ?? b.type ?? msg?.event;
-  if (eventType && !/message/i.test(String(eventType))) return null;
+  const d = (b.data ?? b) as Record<string, any>; // some DSNs nest under data
+  const eventType = String(b.event ?? d.event ?? b.type ?? "");
+  // Only handle inbound new-message events; ignore reactions, reads, receipts,
+  // account-status, etc. (If a DSN omits the event field, we fall through and
+  // rely on message_id + sender presence below.)
+  if (eventType && !/message_received|message\.received|new_message/i.test(eventType)) {
+    return null;
+  }
 
-  const accountId = String(msg.account_id ?? b.account_id ?? "");
-  const messageId = String(msg.id ?? msg.message_id ?? b.message_id ?? "");
+  const accountId = String(d.account_id ?? b.account_id ?? "");
+  const messageId = String(d.message_id ?? d.id ?? b.message_id ?? "");
   const senderId = String(
-    msg.sender?.attendee_provider_id ?? msg.from ?? msg.sender_id ?? msg.attendee_provider_id ?? "",
+    d.sender?.attendee_provider_id ?? b.sender?.attendee_provider_id ?? d.attendee_provider_id ?? "",
   );
-  const chatId = msg.chat_id ?? msg.chat?.id ?? b.chat_id ?? null;
+  const chatId = d.chat_id ?? b.chat_id ?? d.chat?.id ?? null;
   if (!messageId || !senderId) return null;
 
-  const attachments = msg.attachments ?? [];
-  const audio = attachments.find((a: any) => /audio|voice|ptt/i.test(a.type ?? a.mimetype ?? ""));
-  const isAudio = Boolean(audio) || /audio|voice|ptt/i.test(msg.message_type ?? msg.type ?? "");
+  // Unipile puts the text in `message`.
+  const text =
+    typeof d.message === "string"
+      ? d.message
+      : typeof d.text === "string"
+        ? d.text
+        : (d.body ?? null);
+
+  const attachments = d.attachments ?? b.attachments ?? [];
+  const audio = attachments.find((a: any) =>
+    /audio|voice|ptt|ogg|opus/i.test(`${a.type ?? ""} ${a.mimetype ?? ""}`),
+  );
+  const isAudio = Boolean(audio) || /audio|voice|ptt/i.test(d.message_type ?? d.type ?? "");
 
   return {
     accountId,
@@ -132,9 +152,10 @@ function extractEvent(body: unknown): ParsedEvent | null {
     senderId,
     chatId: chatId ? String(chatId) : null,
     type: isAudio ? "audio" : "text",
-    text: typeof msg.text === "string" ? msg.text : (msg.body ?? null),
-    receivedAt: msg.timestamp ?? msg.date ?? null,
+    text,
+    receivedAt: d.timestamp ?? d.date ?? null,
     attachmentId: audio ? String(audio.id ?? audio.attachment_id ?? "") : null,
+    attachmentUrl: audio ? (audio.url ?? null) : null,
     attachmentName: audio ? (audio.name ?? audio.filename ?? null) : null,
     attachmentMime: audio ? (audio.mimetype ?? audio.mime ?? null) : null,
   };
