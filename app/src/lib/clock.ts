@@ -23,6 +23,18 @@ export function formatDate(d: Date): string {
   }).format(d);
 }
 
+/** e.g. "Monday, 7 September 2026" — weekday included so an LLM can resolve
+ *  relative phrases like "this Friday" to an explicit date. */
+export function formatDateWithWeekday(d: Date): string {
+  return new Intl.DateTimeFormat("en-GB", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: PARIS_TZ,
+  }).format(d);
+}
+
 /** ISO local calendar date (YYYY-MM-DD) in Europe/Paris. */
 export function localDate(iso: string): string {
   const parts = new Intl.DateTimeFormat("en-CA", {

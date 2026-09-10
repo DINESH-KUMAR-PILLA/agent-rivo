@@ -13,6 +13,7 @@
     "seed:reset": "tsx scripts/seed.ts --reset",
     "embed": "tsx scripts/embed-procedures.ts",
     "provision": "tsx scripts/provision-users.ts",
+    "demo": "tsx scripts/demo-e2e.ts",
     "test": "tsx tests/run-checks.ts"
   },
   "dependencies": {

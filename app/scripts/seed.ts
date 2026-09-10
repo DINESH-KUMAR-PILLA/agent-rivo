@@ -30,8 +30,20 @@ const readJson = (p: string) => JSON.parse(readFileSync(resolve(ROOT, p), "utf8"
 
 const RESET = process.argv.includes("--reset");
 
+async function ensureAudioBucket() {
+  // Create the private bucket via the Storage API (more reliable than the SQL
+  // insert, which can be blocked depending on project setup). Idempotent.
+  const { error } = await db.storage.createBucket("visit-audio", { public: false });
+  if (error && !/already exists/i.test(error.message)) {
+    console.error("  ✖ could not create visit-audio bucket:", error.message);
+  } else {
+    console.log("  • storage bucket 'visit-audio' ready (private)");
+  }
+}
+
 async function main() {
   console.log(`▶ Seeding ${url}${RESET ? " (reset mode)" : ""}`);
+  await ensureAudioBucket();
 
   if (RESET) {
     console.log("  clearing app-created visit/report/message data…");

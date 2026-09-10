@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { chatJSON } from "@/lib/groq";
-import { formatDate, now } from "@/lib/clock";
+import { formatDate, formatDateWithWeekday, now } from "@/lib/clock";
 import type { Finding, FollowupNote, Message, Store } from "@/lib/types";
 
 /**
@@ -56,13 +56,13 @@ STRICT GROUNDING RULES:
 - Do not fill empty sections with assumptions. Omit categories with nothing to report.
 - Preserve stated uncertainty ("I do not know the quantity" stays unknown).
 - Every finding and follow-up MUST cite at least one real source_message_id from the input.
-- Relative dates: today is {TODAY}. If a follow-up references a weekday like "Friday", include the explicit date in the note text.`;
+- Relative dates: today is {TODAY}. A weekday like "Friday" means the NEXT occurrence of that weekday on or after today; work it out from today's weekday shown above and write the explicit calendar date (e.g. from Monday 7 September 2026, "Friday" = 11 September 2026). Never guess; count forward from today.`;
 
 export async function generateReport(
   store: Store,
   messages: Message[],
 ): Promise<GeneratedReport> {
-  const today = formatDate(now());
+  const today = formatDateWithWeekday(now());
   // Present each source as id + effective text (transcript for audio).
   const sources = messages
     .filter((m) => m.direction === "inbound")

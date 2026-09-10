@@ -274,11 +274,13 @@ async function onCorrection(ctx: Ctx): Promise<AgentResult> {
   }
   const instruction = intent.correction_instruction ?? ctx.effectiveText;
 
-  // Gather current statements to check for ambiguity.
+  // Gather current statements to check for ambiguity. Exclude THIS correction
+  // message itself — we're deciding which existing statement it targets, not
+  // comparing it against its own text.
   const report = await repo.getReportByVisit(active.id);
   const statements = report
     ? report.findings.map((f) => f.text)
-    : (await sourceMessages(active.id)).map((m) => sourceText(m));
+    : (await sourceMessages(active.id)).filter((m) => m.id !== message.id).map((m) => sourceText(m));
 
   const { ambiguous, candidates } = await detectAmbiguity(statements, instruction);
   if (ambiguous) {
