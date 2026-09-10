@@ -71,12 +71,10 @@ export async function POST(req: NextRequest) {
     } catch (e) {
       console.error("[webhook] failed to record unknown sender", e);
     }
-    if (evt.chatId) {
-      await sendWhatsappText(
-        evt.chatId,
-        "This number isn't set up for Agent Rivo. Please ask your administrator to register it. I can't share any network data until then.",
-      );
-    }
+    // IMPORTANT: stay SILENT to unrecognised senders. The connected account may
+    // be a personal number, so replying would spam the owner's real contacts
+    // (and each reply would re-trigger the webhook, causing a loop). We only
+    // ever reply to a sender explicitly bound to a fixture user.
     return NextResponse.json({ ok: true, unknown_sender: true });
   }
 
@@ -159,6 +157,21 @@ function extractEvent(body: unknown): ParsedEvent | null {
   );
   const chatId = d.chat_id ?? b.chat_id ?? d.chat?.id ?? null;
   if (!messageId || !senderId) return null;
+
+  // CRITICAL: ignore messages the connected account SENT itself (outgoing /
+  // "from me"). Unipile fires "new message" for outgoing messages too — and our
+  // own replies are outgoing — so without this guard the bot would answer its
+  // own messages and loop forever. Unipile exposes account_info.user_id to
+  // compare against the sender; also honour explicit from_me/is_sender flags.
+  const accountOwnerId = String(
+    d.account_info?.user_id ?? b.account_info?.user_id ?? d.account?.user_id ?? "",
+  );
+  const fromMe =
+    d.from_me === true ||
+    d.is_sender === true ||
+    d.is_from_me === true ||
+    (accountOwnerId !== "" && accountOwnerId === senderId);
+  if (fromMe) return null;
 
   // Unipile puts the text in `message`.
   const text =
