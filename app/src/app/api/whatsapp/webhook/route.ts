@@ -41,8 +41,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, ignored: true });
   }
 
+  // Log the exact provider identifiers so an operator can bind the sender to a
+  // fixture user. Visible in Vercel → Logs. No message content is logged.
+  console.log(
+    `[webhook] inbound sender="${evt.senderId}" account="${evt.accountId}" type=${evt.type} chat="${evt.chatId}"`,
+  );
+
   const user = await getUserByWhatsappSender(evt.senderId);
   if (!user) {
+    console.log(`[webhook] UNKNOWN sender "${evt.senderId}" — bind it to a user with WHATSAPP_SENDER_ANIKA + npm run provision`);
     if (evt.chatId) {
       await sendWhatsappText(
         evt.chatId,
