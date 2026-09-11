@@ -106,7 +106,7 @@ export async function getVisitDetail(visitId: string) {
   const supabase = createServerSupabase();
   const { data: visit } = await supabase
     .from("visits")
-    .select("*, store:stores(*), author:app_users(display_name)")
+    .select("*, store:stores(*), author:app_users!visits_author_id_fkey(display_name)")
     .eq("id", visitId)
     .maybeSingle();
   if (!visit) return null;
@@ -133,7 +133,7 @@ export async function validatedReports(filter?: { storeId?: string }): Promise<
   const supabase = createServerSupabase();
   let q = supabase
     .from("reports")
-    .select("*, store:stores(*), author:app_users(display_name), visit:visits!reports_visit_id_fkey(started_at)")
+    .select("*, store:stores(*), author:app_users!reports_author_id_fkey(display_name), visit:visits!reports_visit_id_fkey(started_at)")
     .eq("state", "validated");
   if (filter?.storeId) q = q.eq("store_id", filter.storeId);
   const { data } = await q;
@@ -151,7 +151,7 @@ export async function getReport(reportId: string) {
   const supabase = createServerSupabase();
   const { data } = await supabase
     .from("reports")
-    .select("*, store:stores(*), author:app_users(display_name), visit:visits!reports_visit_id_fkey(started_at)")
+    .select("*, store:stores(*), author:app_users!reports_author_id_fkey(display_name), visit:visits!reports_visit_id_fkey(started_at)")
     .eq("id", reportId)
     .maybeSingle();
   if (!data) return null;
