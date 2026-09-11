@@ -25,13 +25,34 @@ export async function POST(req: NextRequest) {
   // Shared-secret check (header or query). Reject silently-ish.
   const provided =
     req.headers.get("x-webhook-secret") ?? req.nextUrl.searchParams.get("secret") ?? "";
-  if (env.unipileWebhookSecret && provided !== env.unipileWebhookSecret) {
+  const secretOk = !env.unipileWebhookSecret || provided === env.unipileWebhookSecret;
+
+  // Read the raw body once so we can (temporarily) capture it for diagnostics.
+  const rawText = await req.text();
+
+  // TEMP DIAGNOSTIC: record every hit (including wrong-secret ones) so an
+  // operator can inspect the real Unipile payload. Removed after setup.
+  try {
+    await serviceClient()
+      .from("messages")
+      .insert({
+        actor_id: null,
+        direction: "inbound",
+        kind: "system",
+        received_at: now().toISOString(),
+        text: `WEBHOOK_RAW secret_ok=${secretOk} body=${rawText.slice(0, 1800)}`,
+      });
+  } catch (e) {
+    console.error("[webhook] debug capture failed", e);
+  }
+
+  if (!secretOk) {
     return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
   }
 
   let body: unknown;
   try {
-    body = await req.json();
+    body = JSON.parse(rawText);
   } catch {
     return NextResponse.json({ ok: false, error: "bad json" }, { status: 400 });
   }
