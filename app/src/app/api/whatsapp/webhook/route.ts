@@ -203,8 +203,15 @@ function extractEvent(body: unknown): ParsedEvent | null {
         : (d.body ?? null);
 
   const attachments = d.attachments ?? b.attachments ?? [];
-  const audio = attachments.find((a: any) =>
-    /audio|voice|ptt|ogg|opus/i.test(`${a.type ?? ""} ${a.mimetype ?? ""}`),
+  // Unipile WhatsApp voice notes look like:
+  //   { attachment_id, attachment_type: "audio", attachment_url, voice_note: true }
+  // so match on attachment_type / voice_note (as well as the older type/mimetype).
+  const audio = attachments.find(
+    (a: any) =>
+      a.voice_note === true ||
+      /audio|voice|ptt|ogg|opus/i.test(
+        `${a.attachment_type ?? a.type ?? ""} ${a.mimetype ?? a.mime ?? ""}`,
+      ),
   );
   const isAudio = Boolean(audio) || /audio|voice|ptt/i.test(d.message_type ?? d.type ?? "");
 
@@ -216,9 +223,9 @@ function extractEvent(body: unknown): ParsedEvent | null {
     type: isAudio ? "audio" : "text",
     text,
     receivedAt: d.timestamp ?? d.date ?? null,
-    attachmentId: audio ? String(audio.id ?? audio.attachment_id ?? "") : null,
-    attachmentUrl: audio ? (audio.url ?? null) : null,
-    attachmentName: audio ? (audio.name ?? audio.filename ?? null) : null,
-    attachmentMime: audio ? (audio.mimetype ?? audio.mime ?? null) : null,
+    attachmentId: audio ? String(audio.attachment_id ?? audio.id ?? "") : null,
+    attachmentUrl: audio ? (audio.attachment_url ?? audio.url ?? null) : null,
+    attachmentName: audio ? (audio.name ?? audio.filename ?? `${messageId}.ogg`) : null,
+    attachmentMime: audio ? (audio.mimetype ?? audio.mime ?? "audio/ogg") : null,
   };
 }
