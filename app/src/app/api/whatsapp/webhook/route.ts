@@ -3,7 +3,6 @@ import { getServerEnv } from "@/lib/env";
 import { getUserByWhatsappSender } from "@/lib/access";
 import { fetchAttachmentBytes, sendWhatsappText } from "@/lib/unipile";
 import { handleInbound, type InboundInput } from "@/lib/agent/orchestrator";
-import { serviceClient } from "@/lib/supabase/service";
 import { now } from "@/lib/clock";
 
 // Webhooks must run on the Node runtime (Buffer, transformers, etc.).
@@ -38,43 +37,17 @@ export async function POST(req: NextRequest) {
 
   const evt = extractEvent(body);
   if (!evt) {
-    // Not a message event we handle (delivery receipt, status, etc.).
+    // Not an inbound message we handle (delivery receipt, status, our own
+    // outgoing message, etc.).
     return NextResponse.json({ ok: true, ignored: true });
   }
 
-  // Log the exact provider identifiers so an operator can bind the sender to a
-  // fixture user. Visible in Vercel → Logs. No message content is logged.
-  console.log(
-    `[webhook] inbound sender="${evt.senderId}" account="${evt.accountId}" type=${evt.type} chat="${evt.chatId}"`,
-  );
-
+  // Bind the verified provider sender to a known regional manager. A sender the
+  // server hasn't mapped gets no reply and no data: the connected account may be
+  // a personal number, so replying would both leak nothing useful and risk
+  // messaging the owner's own contacts.
   const user = await getUserByWhatsappSender(evt.senderId);
   if (!user) {
-    console.log(`[webhook] UNKNOWN sender "${evt.senderId}" — bind it to a user with WHATSAPP_SENDER_ANIKA + npm run provision`);
-    // Record the unrecognised sender so an operator can read the exact id from
-    // the database and bind it (no need to scrape server logs). Best-effort.
-    try {
-      await serviceClient()
-        .from("messages")
-        .upsert(
-          {
-            actor_id: null,
-            direction: "inbound",
-            kind: "system",
-            received_at: now().toISOString(),
-            text: `UNKNOWN_WHATSAPP_SENDER=${evt.senderId} chat=${evt.chatId ?? ""}`,
-            provider_account_id: evt.accountId,
-            provider_message_id: evt.messageId,
-          },
-          { onConflict: "provider_account_id,provider_message_id" },
-        );
-    } catch (e) {
-      console.error("[webhook] failed to record unknown sender", e);
-    }
-    // IMPORTANT: stay SILENT to unrecognised senders. The connected account may
-    // be a personal number, so replying would spam the owner's real contacts
-    // (and each reply would re-trigger the webhook, causing a loop). We only
-    // ever reply to a sender explicitly bound to a fixture user.
     return NextResponse.json({ ok: true, unknown_sender: true });
   }
 

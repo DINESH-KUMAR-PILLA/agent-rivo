@@ -6,8 +6,8 @@ export default function NotFound() {
       <div className="text-5xl">🔒</div>
       <h1 className="text-xl font-bold text-ink">Not available</h1>
       <p className="max-w-sm text-sm text-ink-faint">
-        This record doesn't exist or isn't in your authorised scope. If you believe this is an error,
-        check that you're signed in as the right regional manager.
+        This record doesn&apos;t exist or isn&apos;t in your authorised scope. If you believe this is
+        an error, check that you&apos;re signed in as the right regional manager.
       </p>
       <Link href="/" className="btn-primary mt-2">
         Back to overview

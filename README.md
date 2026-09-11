@@ -1,3 +1,16 @@
+> ## 👉 The solution lives in [`app/`](app/)
+> This is my implementation of the challenge below.
+> - **Setup, architecture & run instructions:** [`app/README.md`](app/README.md)
+> - **Live demo walkthrough / script:** [`app/DEMO_SCRIPT.md`](app/DEMO_SCRIPT.md)
+> - **Live app:** https://agent-rivo.vercel.app  (sign in: `anika@agent-rivo.example.test` / `AgentRivo!2026`; second user `noah@agent-rivo.example.test`)
+>
+> **Stack:** Next.js 14 (TypeScript) · Supabase (Postgres + Auth + Storage + pgvector) · Groq (LLM + Whisper) · Unipile (WhatsApp) · deployed on Vercel.
+> Quick start: `cd app && npm install`, copy `.env.example` → `.env.local`, run the SQL in `app/supabase/migrations/`, then `npm run seed && npm run embed && npm run provision && npm run dev`.
+>
+> The original assignment brief follows.
+>
+> ---
+
 # Agent Rivo
 ## Field Visit Reporting Challenge — Candidate Handbook
 
